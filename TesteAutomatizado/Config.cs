@@ -3,6 +3,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using System;
 using System.Threading;
 
 namespace TesteAutomatizado
@@ -13,7 +14,11 @@ namespace TesteAutomatizado
         {
             ChromeDriver driver = new ChromeDriver();
 
+            public IWebDriver teste;
+
             public string screenshotsPasta = @"C:\Users\x000418\Pictures\Print Teste Automatizados\";
+
+            string counter = DateTime.Now.Ticks.ToString();
 
             public void Maximizar()
             {
@@ -53,9 +58,15 @@ namespace TesteAutomatizado
             public void Screenshot(string nomeArquivo)
             {
                 Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
-                ss.SaveAsFile(screenshotsPasta + nomeArquivo + ".png",
+                ss.SaveAsFile(screenshotsPasta + nomeArquivo + "_" + counter + ".png",
                 ScreenshotImageFormat.Png);
             }
+
+            public void Alerta(string texto)
+            {
+                driver.SwitchTo().Alert().Accept();
+            }
+
         }
 
     }

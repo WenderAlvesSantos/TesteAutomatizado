@@ -27,7 +27,11 @@ namespace TesteAutomatizado
 
             metodos.Esperar(2000);
 
-            metodos.Screenshot("Mais um teste");
+            metodos.Screenshot("teste");
+
+            metodos.Alerta("Teste Concluido");
+
+            metodos.Esperar(2000);
 
             metodos.Close();
         }
