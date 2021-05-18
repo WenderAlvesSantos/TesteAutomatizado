@@ -13,27 +13,27 @@ namespace TesteAutomatizado
         [Test]
         public static void AmbienteTeste()
         {
-            Metodos metodos = new Metodos();
+            Config chrome = new Config();
 
-            metodos.Maximizar();
+            chrome.Maximizar();
 
-            metodos.Navegar("http://google.com");
+            chrome.Navegar("http://google.com");
 
-            metodos.Escrever("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input", "data atual");
+            chrome.Escrever("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input", "data atual");
 
-            metodos.Enter();
+            chrome.Enter();
 
-            metodos.Click("//*[@id='gb']/div/div[1]/a");
+            chrome.Esperar(2000);
 
-            metodos.Esperar(2000);
+            chrome.Screenshot("teste");
 
-            metodos.Screenshot("teste");
+            string copiado = chrome.Copiar("//*[@id='tsf']/div[1]/div[1]/div[2]/div/div[2]/input");
 
-            metodos.Alerta("Teste Concluido");
+            chrome.Colar(copiado, "//*[@id='tsf']/div[1]/div[1]/div[2]/div/div[2]/input");
 
-            metodos.Esperar(2000);
+            chrome.Esperar(2000);
 
-            metodos.Close();
+            chrome.Close();
         }
     }
 }
